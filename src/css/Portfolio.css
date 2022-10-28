@@ -1,0 +1,30 @@
+.portfolio{
+    color: #f0f0f0;
+}
+.wallet{
+    margin-bottom: 20px;
+}
+
+.portfolio-viewer {
+    display: flex;
+    color: #f0f0f0;
+}
+
+.cashInfo {
+    background-color: #66D8C8;
+    padding: 20px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    color: #161817;
+    font-size: large;
+    font-weight: 900;
+}
+.stockInfo {
+    background-color: #161817;
+    padding: 20px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #f0f0f0;
+    font-size: large;
+    font-weight: 900;
+}
