@@ -1,7 +1,63 @@
 .info-box{
     width: 100%;
+    color: aliceblue;
 }
 
-.question-viewer{
-    width: 100%;;
+.info-viewer{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.Market{
+    margin-top: 20px;;
+}
+
+.proceed-button{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #66D8C8;
+    color: #161817;
+    font-weight: 900;
+    font-size: large;
+    border: 0ch;
+}
+
+.decision-button{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;;
+    font-size: larger;
+    border: none;
+    color: aliceblue;
+    border-radius: 10px;;
+
+    /* width: 50%; */
+}
+.decision-input{
+    margin-top: 10px;
+    width: 50%;
+    padding: 15px;
+    text-align: center;
+    font-weight: 900;
+    font-size: large;
+
+}
+.decision-button:active{
+    border: none;
+}
+
+.transaction{
+    margin-top: 20px;
+}
+
+.err-msg{
+    padding-top:10px;
+    padding-bottom:10px;
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    background-color: #e3686e;
+    color: #161817;
+    border-radius: 10px;
 }

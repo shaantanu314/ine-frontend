@@ -35,17 +35,9 @@ function Wallet(props) {
     );
   }
 
-function Portfolio() {
+function Portfolio(props) {
 
-    // const portfolio = props.portfolio
-    const portfolio = {
-        initialCapital:7010,
-        cash:1300,
-        stock:{
-            quantity:10,
-            price:100
-        }
-    };
+    const portfolio = props.portfolio
     const [windowWidth,setWindowWidth] = useState(getWindowWidth());
     const totalWidth = 0.8*windowWidth;
     const cashValue = portfolio.cash;
