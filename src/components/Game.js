@@ -6,11 +6,12 @@ import Market from './Market';
 function Game() {
 
   const initialCapital = 5000;
-  const [cash,setCash] = useState(1300);
+  const [cash,setCash] = useState(5000);
   const [stock,setStockState] = useState({
-    quantity:2,
+    quantity:0,
     price:500,
   });
+
 
   function buyStock(quantity){
     if(quantity*stock.price>cash){
@@ -64,16 +65,35 @@ function Game() {
     }
   }
 
+  function holdStock(isHold){
+    if(!isHold)
+    {
+      return {
+        status:0,
+        err : "Please check the checkbox"
+        }
+    }
+    else
+    {
+      return {
+      status:1,
+      err : null
+      }
+    }
+  }
+
   const portfolio = {
       initialCapital:initialCapital,
       cash:cash,
       stock:stock
   };
 
+  
+
   return (
     <div className="Game"  >
-     <Portfolio portfolio={portfolio}/>
-     <Market cbBuy={buyStock} cbSell={sellStock}/>
+     <Portfolio portfolio={portfolio} />
+     <Market cbBuy={buyStock} cbSell={sellStock} cbHold={holdStock} setStockState={setStockState} stock={stock}/>
     </div>
   );
 }

@@ -43,8 +43,8 @@ function Portfolio(props) {
     const cashValue = portfolio.cash;
     const stockValue = portfolio.stock.quantity*portfolio.stock.price;
     const totalValue = cashValue + stockValue;
-    const cashWidth = Math.ceil(cashValue*totalWidth/totalValue);
-    const stockWidth = totalWidth - cashWidth;
+    const cashWidth = Math.min(Math.ceil(cashValue*totalWidth/totalValue),totalWidth-50);
+    const stockWidth = Math.max(totalWidth - cashWidth,50);
 
     useEffect(()=>{
 
