@@ -1,0 +1,23 @@
+.lottery-choice{
+  background-color: white;
+  color: #161817;
+  padding:20px;
+  margin:10px; 
+  border-radius: 10px;
+  position: relative;
+  min-height: 300px;
+  /* text-align: center; */
+  width: 50%;
+}
+
+.lottery-button{
+    background-color: #70D592;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 10px;
+    color:white;
+    font-size: large;
+    font-weight: 500;
+}

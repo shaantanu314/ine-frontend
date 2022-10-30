@@ -4,11 +4,39 @@ import '../css/Portfolio.css';
 
 function Wallet(props) {
 
-    const {initialCapital,currentValue} = props.info
+    const {initialCapital,currentValue,stock} = props.info
     const netChange = currentValue-initialCapital;
     return (
       <div className="wallet">
-          <div style={{display:"flex"}}>
+
+        <div>
+            <div>
+                Initial Capital: &#8377;{initialCapital}
+            </div>
+            <div>
+                Current Value: &#8377;{currentValue}
+            </div>
+            <div>
+                Stocks Quantity : {stock.quantity}
+            </div>
+            <div >
+                Net Change :
+                {
+                    (netChange>=0)?(
+                        <div style={{color:"#66e64c"}}>
+                            + &#8377;{Math.abs(netChange)} ( +{Math.round(10*netChange*100/initialCapital)/10}% )
+                        </div>
+                    ):(
+                        <div style={{color:"#d9423a"}}>
+                            - &#8377;{Math.abs(netChange)} ( {Math.round(10*netChange*100/initialCapital)/10}% )
+                        </div>
+                    )
+                }
+            </div>
+        </div>
+
+
+          {/* <div style={{display:"flex"}}>
             <div style={{width:"50%"}}>
                 <h3>
                     Initial Capital: &#8377;{initialCapital}
@@ -30,7 +58,8 @@ function Wallet(props) {
                     )
                 }
             </div>
-          </div>
+          </div> */}
+
       </div>
     );
   }
@@ -58,10 +87,13 @@ function Portfolio(props) {
     },[]);
 
     return (
-        <div className="portfolio" >
+        <div class="portfolio" >
+        <div style={{color:"white",fontSize:"larger",textAlign:"center"}}>Portfolio </div>
+        <hr></hr>
             <Wallet class="wallet" info={{
             initialCapital:portfolio.initialCapital,
-            currentValue:totalValue
+            currentValue:totalValue,
+            stock:portfolio.stock
             }}/>
             <div class="portfolio-viewer">
             <div class="cashInfo" style={{width:cashWidth}}>

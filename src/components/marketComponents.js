@@ -79,15 +79,12 @@ function Transaction(props){
     const state = props.state;
     const [transactionChoice , setTransactionChoice] = useState("none"); 
 
-    if(!props.GameStatus)
-    {
-        return (<></>);
-    }
+    
 
     return (
         <>
         <div class="transaction" >
-        <DecisionButton  text="Buy" cb={props.cb.cbBuy} nextState={props.nextState} setError={setError} color="#25da3a" transactionChoice={transactionChoice} setTransactionChoice={setTransactionChoice}/>
+        <DecisionButton  text="Buy" cb={props.cb.cbBuy} nextState={props.nextState} setError={setError} color="#15df07" transactionChoice={transactionChoice} setTransactionChoice={setTransactionChoice}/>
         <DecisionButton text="Sell" cb={props.cb.cbSell} nextState={props.nextState} setError={setError} color="#e04646" transactionChoice={transactionChoice} setTransactionChoice={setTransactionChoice}/>
         <DecisionButton text="Hold" cb = {props.cb.cbHold} nextState={props.nextState} setError={setError} color="#0866d0" transactionChoice={transactionChoice} setTransactionChoice={setTransactionChoice}/>
         {/* <DecisionButton text="Hold" cb={cb}/> */}
@@ -110,37 +107,33 @@ function InfoBox(props){
         return (<div style={{color:"white"}}>Loading...</div>);
     }
 
-    const framingP = data[state]["infoP"].map((d) =>{
-        return (<li>{d}</li>);
-    });
-    const framingN = data[state]["infoN"].map((d) =>{
-        return (<li>{d}</li>);
-    });
-
-    if(!props.GameStatus)
-    {
-        return (<></>);
-    }
-
+   
+   
     return (
         <>
+        <div style={{color:"white",fontSize:"larger",textAlign:"center"}}>Market </div>
+        <hr></hr>
         <div class="stock-price"> Current Trading Price: &#8377;{props.stock.price}</div>
-        <div class="info-viewer" style={{display:"flex",color:"white"}}>
-        <div style={{width:"50%"}}>
-            {framingP}
-        </div>
-        <div style={{width:"50%"}}>
-            {framingN}
-        </div>
+        <div class="info-viewer" >
+            {data[state]["infoP"]}
         </div>
         </>
         
     )
 }
+
+function Finish(){
+    return(
+        <button style={{color:"white",padding:"20px",backgroundColor:"#70D592", border:"none",borderRadius:"10px"}}>
+            Finish
+        </button>
+    );
+}
   
 export {
     DecisionButton,
     Transaction,
-    InfoBox
+    InfoBox,
+    Finish
 
 }

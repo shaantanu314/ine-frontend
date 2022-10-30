@@ -1,8 +1,14 @@
 .portfolio{
     color: #f0f0f0;
+    border: white 2px solid; 
+    border-radius: 10px;
+    padding: 10px;;
 }
 .wallet{
     margin-bottom: 20px;
+    text-align: center;
+    font-size: larger;
+    font-weight: 500;
 }
 
 .portfolio-viewer {
@@ -11,7 +17,7 @@
 }
 
 .cashInfo {
-    background-color: #66D8C8;
+    background-color: #70D592;
     padding: 20px;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;

@@ -4,15 +4,22 @@
 }
 
 .info-viewer{
-    width: 100%;
+    /* width: 100%; */
     margin-bottom: 20px;
+    background-color: white;
+    padding: 20px;
+    color:#161817;
+    border-radius: 20px;
+    font-size: larger;
+    font-weight: 400;
 }
 .stock-price{
     color: #161817;
     font-weight: 900;
     font-size: large;
-    margin-bottom: 40px;
-    background-color: #BEE913;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: white;
     padding: 10px;
     border-radius: 15px;
     width: 50%;
@@ -20,7 +27,12 @@
 }
 
 .Market{
-    margin-top: 20px;;
+    margin-top: 20px;
+    border: white 2px solid; 
+    border-radius: 10px;
+    padding: 10px;;
+    text-align: center;
+    
 }
 
 .decision-button{
@@ -57,21 +69,19 @@
 .decision-button:active{
     border: none;
 }
-.button-holder{
-    text-align: center;
-    display: flex;
-}
+
 
 .button-holder{
     text-align: center;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
 .transaction{
     margin-top: 20px;
-    /* display: flex; */
-
+    text-align: center;
 }
 @media (max-width:800px) {
     .transaction{

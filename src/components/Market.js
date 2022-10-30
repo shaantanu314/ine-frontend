@@ -1,5 +1,5 @@
 import { useEffect,useState } from 'react';
-import {Transaction,InfoBox} from './marketComponents'
+import {Transaction,InfoBox,Finish} from './marketComponents'
 import '../css/Market.css';
 
 
@@ -41,9 +41,16 @@ function Market(props) {
   }
 
   return (
-    <div className="Market">
-        <InfoBox class="info-box" state={state} data={data} GameStatus={GameStatus} stock={stock}/>
-        <Transaction class="transaction" cb={props} nextState={nextState} state={state} GameStatus={GameStatus}/>
+    <div class="Market">
+      {
+        (GameStatus)?(<>
+        <InfoBox class="info-box" state={state} data={data}  stock={stock}/>
+        <Transaction class="transaction" cb={props} nextState={nextState} state={state}/>
+        </>
+        ):(
+          <Finish/>
+        )
+      } 
     </div>
   );
 }
