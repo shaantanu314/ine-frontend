@@ -122,18 +122,10 @@ function InfoBox(props){
     )
 }
 
-function Finish(){
-    return(
-        <button style={{color:"white",padding:"20px",backgroundColor:"#70D592", border:"none",borderRadius:"10px"}}>
-            Finish
-        </button>
-    );
-}
+
   
 export {
     DecisionButton,
     Transaction,
     InfoBox,
-    Finish
-
 }

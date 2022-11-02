@@ -1,6 +1,6 @@
 class responseHolder{
     constructor(){
-        this.response = [] 
+        this.responses = [] 
         this.netWorth = null
         this.stockQuantity = null
         this.stockValue = null
@@ -30,7 +30,7 @@ class responseHolder{
             'stockValueTotal':this.stockValue,
             'decision': newDecision
         }
-        this.response.push(currResponse)
+        this.responses.push(currResponse)
     }
     sendResponseToBackend(){
         return

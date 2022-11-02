@@ -1,18 +1,19 @@
 .lottery-choice{
   background-color: white;
   color: #161817;
-  padding:20px;
+  padding:10px;
   margin:10px; 
   border-radius: 10px;
   position: relative;
-  min-height: 300px;
+  /* min-height: 250px; */
   /* text-align: center; */
   width: 50%;
+  padding-bottom: 35px;
 }
 
 .lottery-button{
     background-color: #70D592;
-    padding: 20px;
+    padding: 15px;
     border: none;
     border-radius: 10px;
     position: absolute;

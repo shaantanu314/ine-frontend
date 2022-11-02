@@ -1,12 +1,12 @@
 import { useEffect,useState } from 'react';
-import {Transaction,InfoBox,Finish} from './marketComponents'
+import {Transaction,InfoBox} from './marketComponents'
 import '../css/Market.css';
 
 
 
 function Market(props) {
   const [state, setState] = useState(null);
-  const [GameStatus,setGameStatus] = useState(true);
+  // const [GameStatus,setGameStatus] = useState(true);
   const [data , setData] = useState(null);
   const stock = props.stock;
  
@@ -34,7 +34,7 @@ function Market(props) {
 
   function nextState(){
     if(state+1===data.length) {
-      setGameStatus(false);
+      props.setPhase("finish");
       return;
     } 
     setState(state+1)
@@ -42,7 +42,9 @@ function Market(props) {
 
   return (
     <div class="Market">
-      {
+       <InfoBox class="info-box" state={state} data={data}  stock={stock}/>
+      <Transaction class="transaction" cb={props} nextState={nextState} state={state}/>
+      {/* {
         (GameStatus)?(<>
         <InfoBox class="info-box" state={state} data={data}  stock={stock}/>
         <Transaction class="transaction" cb={props} nextState={nextState} state={state}/>
@@ -50,7 +52,7 @@ function Market(props) {
         ):(
           <Finish/>
         )
-      } 
+      }  */}
     </div>
   );
 }
