@@ -74,7 +74,7 @@ const Lottery = (props)=>{
   }
   
 const StockMarket = (props)=>{
-    console.log(props.responseHolder.response)
+    console.log(props.responses.responses)
     const initialCapital = props.initialCapital;
     const [cash,setCash] = useState(initialCapital);
     const [stock,setStockState] = useState({
@@ -82,8 +82,10 @@ const StockMarket = (props)=>{
       price:500,
     });
     useEffect(()=>{
-      props.responseHolder.setNetWorth(initialCapital);
-      props.responseHolder.setStockState(stock);
+      const responses = props.responses;
+      responses.setNetWorth(initialCapital);
+      responses.setStockState(stock);
+      props.setResponses(responses);
     },[]);
   
     const portfolio = {
@@ -112,13 +114,14 @@ const StockMarket = (props)=>{
           price:stock.price
         })
         setCash(cash-quantity*stock.price);
-  
-        props.responseHolder.setNetWorth(cash);
-        props.responseHolder.setStockState(stock);
-        props.responseHolder.addNewResponse({
+        const responses = props.responses;
+        responses.setNetWorth(cash);
+        responses.setStockState(stock);
+        responses.addNewResponse({
           'type':'buy',
           'quantity':quantity
         })
+        props.setResponses(responses);
   
   
         return {
@@ -149,13 +152,14 @@ const StockMarket = (props)=>{
           price:stock.price
         })
         setCash(cash+quantity*stock.price);
-  
-        props.responseHolder.setNetWorth(cash);
-        props.responseHolder.setStockState(stock);
-        props.responseHolder.addNewResponse({
+        const responses = props.responses;
+        responses.setNetWorth(cash);
+        responses.setStockState(stock);
+        responses.addNewResponse({
           'type':'sell',
           'quantity':quantity
         })
+        props.setResponses(responses);
         return {
           status:1,
           err:null
@@ -173,12 +177,14 @@ const StockMarket = (props)=>{
       }
       else
       {
-        props.responseHolder.setNetWorth(cash);
-        props.responseHolder.setStockState(stock);
-        props.responseHolder.addNewResponse({
+        const responses = props.responses;
+        responses.setNetWorth(cash);
+        responses.setStockState(stock);
+        responses.addNewResponse({
           'type':'buy',
           'quantity':null
         })
+        props.setResponses(responses);
         return {
         status:1,
         err : null
@@ -198,7 +204,7 @@ const  Finish = (props)=>{
     function submitResponse(){
         const submitURL = backendURL+'submit-form'
         axios.post(submitURL,{
-            'responses':props.responseHolder.responses
+            'responses':props.responses.responses
         })
         .then((res)=>{
             //

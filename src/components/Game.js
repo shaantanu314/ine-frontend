@@ -6,23 +6,23 @@ import responseHolder from './responseHolder';
 
 function Game() {
 
-  const [phase,setPhase] = useState("finish");
+  const [phase,setPhase] = useState("market");
   const [initialCapital,setInitialCapital] = useState(5000);
-  const responses = new responseHolder();
+  const [responses,setResponses] = useState(new responseHolder());
   
 
   function handleLottery(prize){
     setInitialCapital(initialCapital+prize);
   }
-
+  console.log('from main',responses.responses)
   function renderGamePhase(){
     switch (phase) {
       case "lottery":
         return (<Lottery setPhase={setPhase} handleLottery={handleLottery}/>)
       case "market":
-        return (<StockMarket initialCapital={initialCapital} responseHolder={responses} setPhase={setPhase}/>)
+        return (<StockMarket initialCapital={initialCapital} responses={responses} setResponses={setResponses} setPhase={setPhase}/>)
       case "finish":
-        return (<Finish responseHolder={responses}/>);
+        return (<Finish responses={responses}/>);
       default:
         break;
   }
