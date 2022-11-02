@@ -4,6 +4,7 @@ import '../css/Game.css';
 import '../css/Lottery.css';
 import Portfolio from './Portfolio';
 import Market from './Market';
+import responseHolder from './responseHolder';
 
 function Lottery(props){
 
@@ -72,13 +73,18 @@ function Lottery(props){
 }
 
 function StockMarket(props){
-
+  console.log(props.responses.response)
   const initialCapital = props.initialCapital;
   const [cash,setCash] = useState(initialCapital);
   const [stock,setStockState] = useState({
     quantity:0,
     price:500,
   });
+  useEffect(()=>{
+    props.responses.setNetWorth(initialCapital);
+    props.responses.setStockState(stock);
+  },[]);
+
   const portfolio = {
     initialCapital:initialCapital,
     cash:cash,
@@ -105,11 +111,22 @@ function StockMarket(props){
         price:stock.price
       })
       setCash(cash-quantity*stock.price);
+
+      props.responses.setNetWorth(cash);
+      props.responses.setStockState(stock);
+      props.responses.addNewResponse({
+        'type':'buy',
+        'quantity':quantity
+      })
+
+
       return {
         status:1,
         err:null
       };
+
     }
+
   }
 
   function sellStock(quantity){
@@ -131,6 +148,13 @@ function StockMarket(props){
         price:stock.price
       })
       setCash(cash+quantity*stock.price);
+
+      props.responses.setNetWorth(cash);
+      props.responses.setStockState(stock);
+      props.responses.addNewResponse({
+        'type':'sell',
+        'quantity':quantity
+      })
       return {
         status:1,
         err:null
@@ -148,6 +172,12 @@ function StockMarket(props){
     }
     else
     {
+      props.responses.setNetWorth(cash);
+      props.responses.setStockState(stock);
+      props.responses.addNewResponse({
+        'type':'buy',
+        'quantity':null
+      })
       return {
       status:1,
       err : null
@@ -166,6 +196,8 @@ function Game() {
 
   const [phase,setPhase] = useState("lottery");
   const [initialCapital,setInitialCapital] = useState(5000);
+  const responses = new responseHolder();
+  
 
   function handleLottery(prize){
     setInitialCapital(initialCapital+prize);
@@ -175,7 +207,7 @@ function Game() {
     <div className="Game">
       {
         (phase==="market")?(
-          <StockMarket initialCapital={initialCapital}/>
+          <StockMarket initialCapital={initialCapital} responses={responses}/>
         ):(
           <Lottery setPhase={setPhase} handleLottery={handleLottery}/>
         )
