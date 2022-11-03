@@ -10,14 +10,16 @@ import {backendURL} from "../config"
 const Lottery = (props)=>{
 
     const introText = "Hey There! We want you to be a part of a survey. ";
-    const [isLotteryDisplay,setLotteryDisplay] = useState(false);
+    // const [isLotteryDisplay,setLotteryDisplay] = useState(false);
+    const [isLotteryDisplay,setLotteryDisplay] = useState(true);
+
   
     function displayLottery(){
       setLotteryDisplay(true);
     }
     return (
       <div style={{color:"white",fontSize:"22px"}}>
-        <Typewriter
+        {/* <Typewriter
           onInit={(typewriter)=> {
   
           typewriter
@@ -30,8 +32,8 @@ const Lottery = (props)=>{
           .start()
           .callFunction(displayLottery)
           }}
-          />
-  
+          /> */}
+        <h4>Hey There! We want you to be a part of a survey. Please select one of the following lotteries to get started with</h4>
         {
           (isLotteryDisplay)?(
             <div>
@@ -200,11 +202,13 @@ const StockMarket = (props)=>{
   }
 
 const  Finish = (props)=>{
-    const[isSubmmitted,setsubmitState] = useState(false); 
+    const[isSubmitted,setsubmitState] = useState(props.isSubmitted); 
     function submitResponse(){
-        const submitURL = backendURL+'submit-form'
+        const submitURL = backendURL+'submit-form';
+        const email = window.localStorage.getItem("INE-email");
         axios.post(submitURL,{
-            'responses':props.responses.responses
+            'responses':props.responses.responses,
+            'email': email
         })
         .then((res)=>{
             //
@@ -215,11 +219,11 @@ const  Finish = (props)=>{
             console.log(err);
         })
     }
-    console.log(isSubmmitted)
+    console.log(isSubmitted)
     return(
         <>
         {
-            (!isSubmmitted)?(
+            (!isSubmitted)?(
                 <div style={{textAlign:"center"}}>
                     <h3 style={{color:"white"}}>Thanks a lot for being part of this survey! Please click on the Finish button to end the survey.</h3>
                 <div onClick={submitResponse} style={{color:"white",padding:"20px",backgroundColor:"#70D592", border:"none",borderRadius:"10px", margin:"auto",width:"40px"}}>
