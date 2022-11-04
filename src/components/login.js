@@ -82,7 +82,7 @@ function Login(props){
                 props.setPhase("finish")
             }
             else{
-                props.setPhase("lottery")
+                props.setPhase("details")
             }
         })
         .catch((err)=>{

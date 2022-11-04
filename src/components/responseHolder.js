@@ -4,6 +4,7 @@ class responseHolder{
         this.netWorth = null
         this.stockQuantity = null
         this.stockValue = null
+        this.details = null
         // response template
         // {
         //     'netWorth': Int,
@@ -15,6 +16,9 @@ class responseHolder{
         //     }
 
         // }
+    }
+    setUserDetails(dets){
+        this.details = dets
     }
     setNetWorth(netWorth){
         this.netWorth = netWorth

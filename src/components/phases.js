@@ -208,6 +208,7 @@ const  Finish = (props)=>{
         const email = window.localStorage.getItem("INE-email");
         axios.post(submitURL,{
             'responses':props.responses.responses,
+            'details':props.responses.details,
             'email': email
         })
         .then((res)=>{
