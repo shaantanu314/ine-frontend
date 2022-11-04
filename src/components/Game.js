@@ -15,6 +15,7 @@ function Logout(){
   return(
     <button onClick={()=>{
       logout();
+      window.location.reload();
     }}>Logout</button>
   )
 }

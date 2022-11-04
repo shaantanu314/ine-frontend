@@ -61,7 +61,7 @@ function Login(props){
             'email':email
         })
         .then((res)=>{
-            console.log('OTP',res.data);
+            console.log(res);
             setVerifyMode(true);
         })
         .catch((err)=>{
